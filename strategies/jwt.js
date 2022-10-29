@@ -5,6 +5,7 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 opts.secretOrKey = 'secretkey'
 
 module.exports = new JwtStrategy(opts, (jwt_payload, done) => {
+  // TODO: find user in db using User.findOne or User.findById
   if (jwt_payload.email === 'john@email.com') {
     return done(null, true)
   }
